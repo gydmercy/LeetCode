@@ -32,30 +32,23 @@ class Solution {
         
         var carry = 0
         
-        var sumNode: ListNode? = nil
+        var sumList: ListNode? = nil
         var s: ListNode? = nil
         
-        if p != nil {
+        if p != nil || q != nil {
             
-            let sum = p!.val + (q?.val)!
+            let sum = (p?.val)! + (q?.val)!
             
-            sumNode = ListNode(sum % 10)
-            s = sumNode
-            
-            if sum > 9 {
-                carry = 1
-            }
-            
-        } else if q != nil {
-            
-            let sum = (p?.val)! + q!.val
-            
-            sumNode = ListNode(sum % 10)
-            s = sumNode
+            sumList = ListNode(sum % 10)
+            s = sumList
             
             if sum > 9 {
                 carry = 1
             }
+            
+        } else {
+            
+            return nil
             
         }
         
@@ -114,7 +107,7 @@ class Solution {
             
         }
         
-        return sumNode
+        return sumList
         
     }
 }
