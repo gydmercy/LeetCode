@@ -24,26 +24,29 @@
 
 class Solution {
     func twoSum(nums: [Int], _ target: Int) -> [Int] {
-        
+    
         var indices = [Int]()
-        let length =  nums.count
+        var numDic = [Int: Int]() // 字典索引查找时间复杂度为O(1)
         
-        for i in 0 ..< length {
-            for j in (i + 1) ..< length {
+        for i in 0 ..< nums.count {
+        
+            let numberToFind = target - nums[i]
                 
-                if nums[i] + nums[j] == target {
+            if let index = numDic[numberToFind] {
                     
-                    indices.append(i)
-                    indices.append(j)
+                indices.append(i)
+                indices.append(index)
                     
-                    break;
+                break;
                     
-                }
-                
+            } else {
+                    
+                numDic[nums[i]] = i // 将数组转化为字典，数组值作为索引，数组索引作为值
+                    
             }
+                
         }
         
         return indices
-        
     }
 }
